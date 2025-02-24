@@ -1,9 +1,15 @@
 :root {
-    --primary-color: #ff69b4;
-    --secondary-color: #00bfff;
-    --text-color: #333;
+    --primary-color: #8A2BE2;  /* Main purple */
+    --secondary-color: #b57aed; /* Lighter purple */
+    --accent-color: #FFFFFF;   /* White */
+    --text-color: #2B2B2B;
     --background-color: #ffffff;
     --spacing-unit: 2rem;
+    --flyer-gradient: linear-gradient(
+        15deg,
+        var(--primary-color) 0%,
+        var(--secondary-color) 100%
+    );
 }
 
 * {
@@ -13,20 +19,27 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
+    letter-spacing: -0.01em;
 }
 
-/* Header and Navigation */
+/* Header and Navigation Base Styles */
 header {
-    padding: var(--spacing-unit);
+    padding: 1rem var(--spacing-unit);
     position: fixed;
     width: 100%;
-    background: #ffffff41;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.8) 100%
+    );
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(138, 43, 226, 0.1);
     z-index: 1500;
-    box-shadow: 0 2px 10px rgba(166, 0, 255, 0.1);
+    top: 0;
 }
 
 nav {
@@ -38,7 +51,8 @@ nav {
 }
 
 .mit-logo {
-    height: 40px;
+    height: 32px;
+    width: auto;
 }
 
 .nav-links {
@@ -50,15 +64,16 @@ nav {
     text-decoration: none;
     color: #8A2BE2;
     font-weight: 600;
-    font-size: 1.1rem;
-    transition: opacity 0.2s;
-    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    padding: 0.4rem 0.8rem;
     border-radius: 4px;
+    background: transparent;
 }
 
 .nav-links a:hover {
-    background: rgba(138, 43, 226, 0.1);
-    opacity: 1;
+    background: rgba(138, 43, 226, 0.08);
+    transform: translateY(-1px);
 }
 
 /* Medium screens */
@@ -76,90 +91,99 @@ nav {
     }
 }
 
-/* Small screens */
+/* Main content spacing */
+main {
+    padding-top: 0;
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
-    .nav-links {
+    header {
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.95);
         padding: 0.8rem;
-        display: flex;
-        justify-content: space-around;
-        box-shadow: 0 -2px 10px rgb(204, 0, 255);
-        backdrop-filter: blur(10px);
-        z-index: 2000;
+        background: rgba(255, 255, 255, 0.98);
     }
 
-    .nav-links a {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
-
-    main {
-        padding-bottom: 60px;
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
     }
 
     .mit-logo {
         height: 32px;
+        width: auto;
     }
 
-    body {
-        padding-bottom: 60px;
-    }
-
-    section {
-        padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
-    }
-
-    section[id] {
-        scroll-margin-bottom: 70px;
-    }
-
-    .rally-title {
-        max-width: 100%;
+    .nav-links {
         width: 100%;
-        height: auto;
-        padding: 0 var(--spacing-unit);
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    main {
+        padding-top: 80px;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding-top: var(--spacing-unit);
     }
 
     .event-details {
+        width: auto;
+        margin: var(--spacing-unit);
+    }
+
+    .rally-title {
         width: 100%;
-        margin: var(--spacing-unit) var(--spacing-unit);
+        height: auto;
+        padding: 0 1rem;
+    }
+
+    .main-logo {
+        max-width: 250px;
     }
 }
 
 /* Extra small screens */
 @media (max-width: 480px) {
-    .nav-links a {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
+    header {
+        padding: 0.6rem;
     }
 
     .mit-logo {
         height: 28px;
     }
-}
 
-/* Add padding to main content to account for fixed header */
-main {
-    padding-top: 80px;
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .rally-title {
+        padding: 0 0.5rem;
+    }
+
+    .main-logo {
+        max-width: 200px;
+    }
 }
 
 /* Hero Section */
 .hero {
-    min-height: 90vh;
+    padding-top: calc(var(--spacing-unit) * 2);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: var(--spacing-unit);
     text-align: center;
 }
 
 .main-logo {
-    max-width: 300px;
+    max-width: 400px;
     margin-bottom: var(--spacing-unit);
 }
 
@@ -169,7 +193,9 @@ main {
 }
 
 .event-details {
-    background: #8A2BE2;
+    position: relative;
+    background: linear-gradient(145deg, #8A2BE2, #b57aed);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
     color: white;
     padding: var(--spacing-unit);
     border-radius: 8px;
@@ -177,25 +203,54 @@ main {
     width: 600px;
 }
 
+.event-details::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        #8A2BE2 0%,
+        #FF69B4 50%,
+        #00BFFF 100%
+    );
+    z-index: -1;
+    border-radius: 10px;
+    filter: blur(10px);
+    opacity: 0.7;
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
 .event-details h2 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
+    color: white;
 }
 
 .event-details h3 {
     font-size: 1.4rem;
     margin-bottom: 0.3rem;
+    color: white;
 }
 
 .event-details p {
     font-size: 1.2rem;
+    color: white;
 }
 
 /* Content Sections */
 section {
-    padding: calc(var(--spacing-unit) * 2);
+    padding: 6rem 2rem;
+    scroll-margin-top: 100px;
     max-width: 1200px;
     margin: 0 auto;
+    animation: fadeIn 0.6s ease both;
 }
 
 .intro {
@@ -203,8 +258,10 @@ section {
 }
 
 .intro p {
-    max-width: 800px;
-    margin: 0 auto var(--spacing-unit);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 720px;
+    margin: 0 auto 2rem;
 }
 
 /* Mascot Graphics */
@@ -213,9 +270,17 @@ section {
     padding: var(--spacing-unit);
 }
 
+.graphics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Space between images */
+}
+
 .mascot-graphic {
-    width: 200px;
-    height: auto;
+    width: 250px; /* Fixed width */
+    height: 250px; /* Fixed height */
+    object-fit: contain; /* Prevents distortion */
     margin: 0 var(--spacing-unit);
 }
 
@@ -229,7 +294,8 @@ section {
 
 .sponsor {
     padding: calc(var(--spacing-unit) * 1.5);
-    background: #8A2BE2;
+    background: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(138, 43, 226, 0.1);
     color: white;
     border-radius: 8px;
     text-align: center;
@@ -239,6 +305,25 @@ section {
     min-height: 120px;
     font-size: 1rem;
     font-weight: 600;
+    position: relative;
+}
+
+.sponsor::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, 
+        #8A2BE2 0%,
+        #FF69B4 50%,
+        #00BFFF 100%
+    );
+    z-index: -1;
+    border-radius: 8px;
+    filter: blur(8px);
+    opacity: 0.3;
 }
 
 .sponsor.coming-soon {
@@ -247,24 +332,73 @@ section {
     opacity: 0.9;
 }
 
+.sponsor a {
+    color: white;
+    text-decoration: none;
+}
+
+.sponsor a:hover {
+    text-decoration: underline;
+}
+
 /* People Grid */
 .people-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: calc(var(--spacing-unit) * 2);
     margin-top: var(--spacing-unit);
+    grid-auto-rows: 1fr;
 }
 
 .person-card {
     padding: var(--spacing-unit);
-    background: #8A2BE2;
+    background: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(138, 43, 226, 0.1);
     color: white;
     border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.person-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, 
+        #8A2BE2 0%,
+        #FF69B4 50%,
+        #00BFFF 100%
+    );
+    z-index: -1;
+    border-radius: 8px;
+    filter: blur(8px);
+    opacity: 0.3;
+}
+
+.person-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(138, 43, 226, 0.2);
+}
+
+.person-card > *:not(.person-image) {
+    flex: 0 0 auto;
+}
+
+.person-card p {
+    flex: 1 0 auto;
+    margin-bottom: 1rem;
 }
 
 .person-card h3,
 .person-card h4,
-.person-card p,
 .person-card a {
     color: white;
 }
@@ -280,23 +414,65 @@ section {
     object-fit: cover;
     margin: 0 auto 1rem;
     display: block;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 0 3px var(--primary-color);
 }
 
 /* Flyer Section */
 .flyer {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.flyer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(138, 43, 226, 0.1);
+    z-index: 0;
+}
+
+/* Add glowing effect like person cards */
+.flyer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        #8A2BE2 0%,
+        #FF69B4 50%,
+        #00BFFF 100%
+    );
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0.3;
+}
+
+.flyer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-unit);
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 0;
-    background: #892be25a;
 }
 
 .rally-flyer {
-    max-height: 100vh;
-    width: 100%;
+    max-height: 70vh;
+    width: auto;
     object-fit: contain;
-    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 /* Adjust flyer for mobile */
@@ -323,8 +499,7 @@ footer {
 /* Update mobile footer spacing */
 @media (max-width: 768px) {
     footer {
-        margin-bottom: 60px; /* Account for bottom navigation */
-        padding: calc(var(--spacing-unit) * 0.5);
+        margin-bottom: 0; /* Remove space for bottom nav */
     }
 }
 
@@ -332,6 +507,125 @@ footer {
 @media (max-width: 768px) {
     :root {
         --spacing-unit: 1rem;
+    }
+
+    /* Typography adjustments */
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .event-details {
+        width: auto;
+        margin: var(--spacing-unit);
+        padding: 1.5rem;
+    }
+
+    .event-details h2 {
+        font-size: 1.5rem;
+    }
+
+    .event-details h3 {
+        font-size: 1.2rem;
+    }
+
+    .event-details p {
+        font-size: 1rem;
+    }
+
+    /* Mascot graphics */
+    .graphics {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .mascot-graphic {
+        width: 200px;
+        height: 200px;
+        margin: 0;
+    }
+
+    /* Section spacing */
+    section {
+        padding: 3rem 1rem;
+    }
+
+    /* Grid adjustments */
+    .sponsor-grid {
+        gap: 1rem;
+    }
+
+    .people-grid {
+        gap: 1.5rem;
+    }
+
+    .person-card {
+        padding: 1.25rem;
+    }
+
+    /* Flyer adjustments */
+    .flyer {
+        padding: 60px 0;
+    }
+
+    .rally-flyer {
+        max-height: 85vh;
+        width: 100%;
+        padding: 0.5rem;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .event-details h2 {
+        font-size: 1.3rem;
+    }
+
+    .person-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .sponsor {
+        min-height: 100px;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .intro p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Ensure bottom nav doesn't cover content */
+    main {
+        padding-bottom: 70px;
+    }
+
+    /* Adjust hero section */
+    .hero {
+        min-height: 80vh;
+        padding: 1rem;
+    }
+
+    .main-logo {
+        max-width: 250px;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .main-logo {
+        max-width: 200px;
+    }
+
+    .rally-flyer {
+        max-height: 70vh;
     }
 }
 
@@ -406,6 +700,21 @@ figcaption {
     content: '→ ';
 }
 
+.bio-link::after {
+    content: ' ↗';
+    font-size: 0.8em;
+}
+
+.person-links a {
+    transition: transform 0.2s ease, background 0.2s ease;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid transparent;
+}
+
+.person-links a:hover {
+    border-bottom-color: var(--accent-color);
+}
+
 /* Banner Strip */
 .banner-strip {
     width: 100%;
@@ -442,4 +751,61 @@ figcaption {
     .banner-container {
         padding: calc(var(--spacing-unit) * 0.5) 0;
     }
+}
+
+/* Base h2 styles */
+h2 {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Remove all h2 underlines by default */
+h2::after {
+    display: none;
+}
+
+/* Add underline only for specific section headings */
+.sponsors > h2::after,
+.people > h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    display: block;
+}
+
+.pride-flag {
+    height: 4px;
+    background: linear-gradient(90deg,
+        #8A2BE2 0%,
+        #b57aed 50%,
+        #8A2BE2 100%
+    );
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 } 

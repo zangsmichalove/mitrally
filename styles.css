@@ -264,6 +264,15 @@ section {
     margin: 0 auto 2rem;
 }
 
+.intro p strong {
+    font-weight: 700; /* Bold weight */
+}
+
+/* Base strong tag styling */
+strong {
+    font-weight: 700;
+} 
+
 /* Mascot Graphics */
 .mascots {
     text-align: center;

@@ -484,6 +484,148 @@ strong {
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
+
+
+/* Program Section */
+.program {
+    text-align: center;
+}
+
+.program h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    display: block;
+}
+
+.program-placeholder {
+    padding: calc(var(--spacing-unit) * 1.5);
+    background: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(138, 43, 226, 0.1);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    min-height: 120px;
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.program-placeholder::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, 
+        #8A2BE2 0%,
+        #FF69B4 50%,
+        #00BFFF 100%
+    );
+    z-index: -1;
+    border-radius: 8px;
+    filter: blur(8px);
+    opacity: 0.3;
+}
+
+/* Add program link to navigation */ 
+
+
+
+/* Resource Fair Section */
+.resources h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    display: block;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: var(--spacing-unit);
+    grid-auto-rows: 1fr;
+}
+
+.resource-card {
+    padding: var(--spacing-unit);
+    background: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(138, 43, 226, 0.1);
+    color: white;
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.resource-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, 
+        #8A2BE2 0%,
+        #FF69B4 50%,
+        #00BFFF 100%
+    );
+    z-index: -1;
+    border-radius: 8px;
+    filter: blur(8px);
+    opacity: 0.3;
+}
+
+.resource-card.coming-soon {
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    min-height: 200px;
+}
+
+.resource-placeholder {
+
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .resources-grid {
+        gap: 1.5rem;
+    }
+
+    .resource-card {
+        padding: 1.25rem;
+    }
+} 
+
+
+
+
+
+
+
 /* Adjust flyer for mobile */
 @media (max-width: 768px) {
     .rally-flyer {

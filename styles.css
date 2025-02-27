@@ -123,12 +123,12 @@ main {
     }
 
     main {
-        padding-top: 80px;
+        padding-top: 120px;
     }
 
     .hero {
         min-height: 100vh;
-        padding-top: var(--spacing-unit);
+        padding-top: calc(var(--spacing-unit) * 0.5);
     }
 
     .event-details {

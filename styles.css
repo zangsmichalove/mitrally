@@ -273,6 +273,40 @@ strong {
     font-weight: 700;
 } 
 
+
+
+.welcome-text {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    color: var(--primary-color);
+    margin: 1rem 0 3rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: bold;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .welcome-text {
+        font-size: 2.5rem;
+        margin: 1.5rem 0 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-text {
+        font-size: 2rem;
+        margin: 1rem 0 1.5rem;
+    }
+} 
+
+
+
+
+
+
 /* Mascot Graphics */
 .mascots {
     text-align: center;

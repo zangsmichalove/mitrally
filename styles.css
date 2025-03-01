@@ -311,7 +311,7 @@ strong {
 .action-links {
     margin-top: 3rem;
     padding: var(--spacing-unit);
-    background: rgba(255, 217, 0, 0.872);
+    background: rgba(255, 217, 0, 0.339);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(255, 217, 0, 0.1);
 }

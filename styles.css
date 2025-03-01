@@ -306,6 +306,39 @@ strong {
 
 
 
+/* Action Links */
+
+.action-links {
+    margin-top: 3rem;
+    padding: var(--spacing-unit);
+    background: rgba(255, 217, 0, 0.872);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(255, 217, 0, 0.1);
+}
+
+/* Ensure text is readable on yellow background */
+.action-links p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #000000; /* Black text for better contrast */
+}
+
+.action-link {
+    color: var(--primary-color); /* Keep the purple color for links */
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.action-link:hover {
+    background: rgba(138, 43, 226, 0.1);
+    text-decoration: underline;
+} 
+
+
+
 
 /* Mascot Graphics */
 .mascots {
@@ -521,39 +554,29 @@ strong {
 
 
 /* Program Section */
-.program {
-    text-align: center;
+/* Program Grid and Cards */
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: var(--spacing-unit);
 }
 
-.program h2::after {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-color);
-    display: block;
-}
-
-.program-placeholder {
-    padding: calc(var(--spacing-unit) * 1.5);
+.program-card {
+    padding: var(--spacing-unit);
     background: var(--primary-color);
     box-shadow: 0 4px 6px rgba(138, 43, 226, 0.1);
     color: white;
     border-radius: 8px;
-    text-align: center;
-    min-height: 120px;
-    font-size: 1.1rem;
-    font-style: italic;
-    opacity: 0.9;
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
 }
 
-.program-placeholder::after {
+.program-card::after {
     content: '';
     position: absolute;
     top: -1px;
@@ -570,6 +593,71 @@ strong {
     filter: blur(8px);
     opacity: 0.3;
 }
+
+.speaker-info {
+    margin-bottom: 1.5rem;
+}
+
+.speaker-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.speaker-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    opacity: 0.9;
+}
+
+.affiliation {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.talk-info {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.talk-title {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.speaker-link, .affiliation-link {
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.speaker-link:hover, .affiliation-link:hover {
+    text-decoration: underline;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .program-grid {
+        gap: 1.5rem;
+    }
+
+    .program-card {
+        padding: 1.25rem;
+    }
+
+    .speaker-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .speaker-info h4 {
+        font-size: 1rem;
+    }
+
+    .talk-title {
+        font-size: 1.1rem;
+    }
+} 
 
 /* Add program link to navigation */ 
 

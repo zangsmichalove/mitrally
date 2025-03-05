@@ -626,6 +626,25 @@ strong {
     font-weight: 500;
 }
 
+.recent-work {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.work-link {
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.work-link:hover {
+    text-decoration: none;
+    border-bottom-color: white;
+}
+
 .speaker-link, .affiliation-link {
     color: white;
     text-decoration: none;
